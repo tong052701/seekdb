@@ -52,7 +52,8 @@ int ObExprAIPrompt::calc_result_typeN(ObExprResType &type,
   int ret = OB_SUCCESS;
   bool is_null_res = false;
   ObExprResType template_type = types_stack[0];
-  if (!ob_is_string_tc(template_type.get_type())) {
+  if (!ob_is_string_tc(template_type.get_type())
+      && !ob_is_text_tc(template_type.get_type())) {
     ret = OB_ERR_INVALID_TYPE_FOR_OP;
   } else {
     types_stack[0].set_calc_type(ObVarcharType);
